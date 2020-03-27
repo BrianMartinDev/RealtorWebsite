@@ -9,5 +9,11 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:E:\Developement\2020\Oriley Course Meterial\RealtorWebsite\db.sqlite3</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="brianmartindev.database.windows.net" uuid="053c8536-0c95-4c99-ab06-0bcaf2d0c425">
+      <driver-ref>azure.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://brianmartindev.database.windows.net:1433;database=realtordb;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;</jdbc-url>
+    </data-source>
   </component>
 </project>

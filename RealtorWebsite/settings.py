@@ -85,18 +85,6 @@ DATABASES = {
         'NAME': 'realtordb',
         'USER': 'root',
         'PASSWORD': 'admin123',
-
-        # 'ENGINE': 'django.db.backends.mysql',
-
-        # 'NAME': 'realtordb',
-
-        # 'USER': 'Bmartt5',
-
-        # 'PASSWORD': '#Copper55',
-
-        # 'HOST': 'brianmartindev.database.windows.net',
-
-        # 'PORT': '1433',
     }
 }
 

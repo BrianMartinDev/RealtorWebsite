@@ -1,3 +1,21 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 
-# Create your views here.
+from listings.models import Listing
+
+
+def index(request):
+    listings = Listing.objects.all()
+
+    context = {
+        'listings': listings
+    }
+    return render(request, 'listings.html', context)
+
+
+def listing(request):
+    return render(request, 'listings.html')
+
+
+def search(request):
+    return render(request, 'search.html')

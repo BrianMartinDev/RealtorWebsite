@@ -10,12 +10,12 @@ def index(request):
     context = {
         'listings': listings
     }
-    return render(request, 'listings.html', context)
+    return render(request, 'listings/listings.html', context)
 
 
 def listing(request):
-    return render(request, 'listings.html')
+    return render(request, 'listings/listings.html')
 
 
 def search(request):
-    return render(request, 'search.html')
+    return render(request, 'listings')

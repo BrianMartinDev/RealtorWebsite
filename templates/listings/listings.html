@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
 
-{% load humanize %}
+
+
 
 {% block title %} | Browse Property Listings {% endblock %}
 
@@ -22,7 +22,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                        <a href="{% url 'index' %}">
+                        <a href=" ">
                             <i class="fas fa-home"></i> Home</a>
                     </li>
                     <li class="breadcrumb-item active"> Browse Listings</li>
@@ -42,7 +42,7 @@
                                 <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
                                 <div class="card-img-overlay">
                                     <h2>
-                                        <span class="badge badge-secondary text-white">${{ listing.price | intcomma }}</span>
+                                        <span class="badge badge-secondary text-white"></span>
                                     </h2>
                                 </div>
                                 <div class="card-body">

@@ -5,6 +5,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Listing
 
 
+# /listings
 def index(request):
     listings = Listing.objects.order_by('-list_date').filter(is_published=True)
 
@@ -18,13 +19,16 @@ def index(request):
     return render(request, 'listings/listings.html', context)
 
 
+# /listings/1
 def listing(request, listing_id):
-    listing = get_object_or_404(Listing, pk=listing_id)
+    listings_id = get_object_or_404(Listing, pk=listing_id)
 
     context = {
-        'listing': listing
+        'listing': listings_id
     }
     return render(request, 'listings/listing.html', context)
 
+
+# /listings/search?keywords=&city=
 def search(request):
     return render(request, 'listings')

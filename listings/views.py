@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .choices import state_choices, price_choices, bedroom_choices
 
 from .models import Listing
 
@@ -31,4 +32,12 @@ def listing(request, listing_id):
 
 # /listings/search?keywords=&city=
 def search(request):
-    return render(request, 'listings')
+    queryset_list = Listing.objects.order_by('-list_date'
+                                             )
+    context = {
+        'state_choices': state_choices,
+        'bedroom_choices': bedroom_choices,
+        'price_choices': price_choices,
+        'listings': queryset_list,
+    }
+    return render(request, 'listings/search.html', context)

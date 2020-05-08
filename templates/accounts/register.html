@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="register" class="wrapper">
+        <div
+                class="page-header"
+                style=""
+        >
+            <div class="filter"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-7 col-12 ml-auto">
+                        <div class="info info-horizontal">
+                            <div class="icon">
+                                <i class="fa fa-umbrella"></i>
+                            </div>
+                            <div class="description">
+                                <h3>We've got you covered</h3>
+                                <p>
+                                    Larger, yet dramatically thinner. More powerful, but remarkably
+                                    power efficient. Everything you need in a single case.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="info info-horizontal">
+                            <div class="icon">
+                                <i class="fa fa-map-signs"></i>
+                            </div>
+                            <div class="description">
+                                <h3>Clear Directions</h3>
+                                <p>
+                                    Efficiently unleash cross-media information without cross-media
+                                    value. Quickly maximize timely deliverables for real-time
+                                    schemas.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="info info-horizontal">
+                            <div class="icon">
+                                <i class="fa fa-user-secret"></i>
+                            </div>
+                            <div class="description">
+                                <h3>We value your privacy</h3>
+                                <p>
+                                    Completely synergize resource taxing relationships via premier
+                                    niche markets.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-5 col-12 mr-auto">
+                        <div class="card card-register">
+                            <!-- Alerts -->
+                            {% include 'partials/_alerts.html' %}
+                            <form class="register-form"  {% url 'register' %} method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" name="first_name" placeholder="First Name" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="password" name="last_name" placeholder="Last Name" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" name="email" placeholder="Email" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" name="password" placeholder="Password" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" name="password_check" placeholder="Password" class="form-control"/>
+                                </div>
+                                <button class="btn btn-block btn-round"> Register</button>
+                            </form>
+                            <div class="login">
+                                <p>Already have an account? <a href="">Log in</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

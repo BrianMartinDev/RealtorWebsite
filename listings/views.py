@@ -34,6 +34,7 @@ def listing(request, listing_id):
 def search(request):
     queryset_list = Listing.objects.order_by('-list_date')
 
+    # <GetFormData>
     # Keywords
     if 'keywords' in request.GET:
         keywords = request.GET['keywords']
@@ -63,7 +64,7 @@ def search(request):
         price = request.GET['price']
         if price:
             queryset_list = queryset_list.filter(price__lte=price)
-
+    # <End GetFormData/>
     context = {
         'state_choices': state_choices,
         'bedroom_choices': bedroom_choices,

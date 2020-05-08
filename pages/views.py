@@ -1,8 +1,10 @@
+from django.contrib import messages
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from listings.models import Listing
 from listings.choices import bedroom_choices, price_choices, state_choices
 from realtors.models import Realtor
+
 
 # index
 def index(request):
@@ -17,6 +19,7 @@ def index(request):
 
     return render(request, 'pages/index.html', context)
 
+
 # /about
 def about(request):
     realtors = Realtor.objects.order_by('-hire_date')
@@ -28,3 +31,4 @@ def about(request):
         'mvp_realtors': mvp_realtors
     }
     return render(request, 'pages/about.html', context)
+

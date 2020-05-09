@@ -45,7 +45,7 @@
                             class="nav-item mr-3"
                         {% endif %}
                 >
-                    <a class="nav-link" data-toggle="modal" data-target="#loginModal" href="">Register</a>
+                    <a class="nav-link" data-toggle="modal" data-target="#loginModal" href="{% url 'register' %}">Register</a>
                 </li>
 
             </ul>
@@ -81,7 +81,7 @@
                             {% endif %}
                     >
                         <a class="nav-link">
-                            <i class="fas fa-user-plus"></i> Register</a>
+                            <i class="fas fa-user-plus" href="{% url 'register' %}"></i> Register</a>
                     </li>
                     <li
                             {% if 'login' in request.path %}

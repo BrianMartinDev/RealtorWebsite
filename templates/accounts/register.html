@@ -51,29 +51,33 @@
                         <div class="card card-register">
                             <!-- Alerts -->
                             {% include 'partials/_alerts.html' %}
-                            <form class="register-form"  {% url 'register' %} method="POST">
+                            <form action="{% url 'register' %}" method="POST">
                                 {% csrf_token %}
                                 <div class="form-group">
-                                    <label>First Name</label>
-                                    <input type="text" name="first_name" placeholder="First Name" class="form-control"/>
+                                    <label for="first_name">First Name</label>
+                                    <input type="text" name="first_name" class="form-control" >
                                 </div>
                                 <div class="form-group">
-                                    <label>Last Name</label>
-                                    <input type="password" name="last_name" placeholder="Last Name" class="form-control"/>
+                                    <label for="last_name">Last Name</label>
+                                    <input type="text" name="last_name" class="form-control" >
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="text" name="email" placeholder="Email" class="form-control"/>
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" class="form-control" >
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" name="password" placeholder="Password" class="form-control"/>
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control" >
                                 </div>
                                 <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" name="password_check" placeholder="Password" class="form-control"/>
+                                    <label for="password2">Password</label>
+                                    <input type="password" name="password" class="form-control" required>
                                 </div>
-                                <button class="btn btn-block btn-round"> Register</button>
+                                <div class="form-group">
+                                    <label for="password">Confirm Password</label>
+                                    <input type="password" name="password2" class="form-control" required>
+                                </div>
+                                <input type="submit" value="Register" class="btn btn-secondary btn-block">
                             </form>
                             <div class="login">
                                 <p>Already have an account? <a href="">Log in</a>.</p>

@@ -1,18 +1,23 @@
-from django.contrib import messages
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User, auth
-from django.http import HttpResponse
-
-
 # /login
+from django.contrib import messages
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
+from django.shortcuts import redirect, render
+
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
+
+
 def login(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        user_name = request.POST.get('username', False)
+        pswd = request.POST.get('password', False)
 
-        user = auth.authenticate(username=username, password=password)
+        user = authenticate(request, username=user_name, password=pswd)
+
         if user is not None:
-            auth.login(request, user)
+            login(request, user)
             messages.success(request, 'You are now logged in')
             return redirect('dashboard')
         else:
@@ -67,3 +72,9 @@ def register(request):
             return redirect('register')
     else:
         return render(request, 'accounts/register.html')
+
+
+class SignUp(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'signup.html'

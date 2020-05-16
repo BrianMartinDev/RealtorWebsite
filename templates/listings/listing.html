@@ -173,7 +173,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action=" " method="POST">
+                    <form action="{% url 'contact' %}" method="POST">
                         {% csrf_token %}
                         {% if user.is_authenticated %}
                             <input type="hidden" name="user_id" value="{{ user.id }}">

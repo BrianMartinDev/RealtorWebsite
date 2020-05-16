@@ -1,5 +1,5 @@
 # /login
-from django.contrib import messages
+from django.contrib import messages, auth
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
@@ -7,6 +7,8 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
+from realtors.models import Realtor
+from contacts.models import Contacts
 
 
 def login(request):
@@ -28,12 +30,20 @@ def login(request):
 
 # /logout
 def logout(request):
-    return render(request, 'index')
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request, 'You are logged out')
+        return render(request, 'index')
 
 
 # /dashboard
 def dashboard(request):
-    return render(request, 'accounts/dasboard.html')
+    user_contacts = Contacts.objects.order_by('-contact_date').filter(user_id=request.user.id)
+
+    context = {
+        'contacts': user_contacts
+    }
+    return render(request, 'accounts/dasboard.html', context)
 
 
 def register(request):
@@ -78,3 +88,8 @@ class SignUp(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
+    print(UserCreationForm)
+
+
+def settings(request):
+    return render(request, 'accounts/settings.html')
